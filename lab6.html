@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cat Facts</title>
+</head>
+<body>
+  <h1>Cat Facts</h1>
+  <button onclick="fetchCatFacts()">Get Cat Facts</button>
+  <br><br>
+  <img id="catImage" src="placeholder.jpg">
+  <br><br>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Fact ID</th>
+        <th>Fact</th>
+      </tr>
+    </thead>
+    <tbody id="factsTable">
+      <!-- Dynamic rows to fit depending on the amount of content handled in JS -->
+    </tbody>
+  </table>
+
+  <script>
+    async function fetchCatFacts() {//async use await && avoid .then for readability
+      // 2 fetch data
+      const response = await fetch('https://brianobruno.github.io/cats.json', { method: 'GET' });
+      const data = await response.json();
+
+      // 3 Sort facts by factId 
+      data.facts.sort((a, b) => a.factId - b.factId);
+
+      let rows = '';
+      for (let i = 0; i < data.facts.length; i++) {
+        rows += `<tr><td>${data.facts[i].factId}</td><td>${data.facts[i].text}</td></tr>`;
+      }
+      document.getElementById('factsTable').innerHTML = rows;
+
+      // 4Update image
+      document.getElementById('catImage').src = data.catPhoto;
+    }
+  </script>
+
+</body>
+</html>
