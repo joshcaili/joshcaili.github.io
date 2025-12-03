@@ -7,7 +7,7 @@ const fetchAnime = async (endpoint) => {
         const url = `${BASE_URL}${endpoint}`;
         const response = await fetch(url);
         
-        if (!response.ok) {
+        if (!response.ok) {  // checking if the api even connected at all
             if (response.status === 429) {
                 throw new Error('Rate limit exceeded. Please wait a moment before trying again.');
             }
@@ -17,7 +17,7 @@ const fetchAnime = async (endpoint) => {
         const data = await response.json();
         return data.data || data; // return object's data if successful
     } 
-    catch (error) {           
+    catch (error) {           // if api connected & bad response
         alert(`Error fetching ${title}: ${error.message}. Please try again later.`);
         
         contentWrapper = document.getElementById('anime-content-wrapper');
