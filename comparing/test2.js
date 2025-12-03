@@ -1,4 +1,3 @@
-
 const getPopularAnime = async () => {
     try {
         const url = 'https://api.jikan.moe/v4/top/anime?filter=bypopularity';
