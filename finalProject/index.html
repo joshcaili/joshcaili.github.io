@@ -64,10 +64,10 @@
                 </div>
                 
                 <div class="col-lg-4 col-12">
-                    <form action="" class="search-form d-flex position-relative">
+                    <form onsubmit="renderContent(); return false;" action="" class="search-form d-flex position-relative">
                         <input type="text" placeholder="Search Anime" id="search-input" 
                                class="form-control me-2 border border-5 border-secondary rounded-pill p-3 fs-5">
-                        <button type="submit" onsubmit="handleSearch(); return false;" id="btn-search" class="btn btn-primary position-absolute end-0 h-100 rounded-pill fs-5">
+                        <button type="submit" id="btn-search" class="btn btn-primary position-absolute end-0 h-100 rounded-pill fs-5">
                             Search
                         </button>
                     </form>
